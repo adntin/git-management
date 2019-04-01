@@ -21,3 +21,12 @@ git commit -m '提交信息'
 ```
 git push -u origin master
 ```
+
+### pre-commit
+
+1. lint 检查, 报错时不能 commit
+
+### pre-push
+
+1. 单元测试正确性检查
+2. 单元测试覆盖率检查
