@@ -1,32 +1,17 @@
-初始化项目
+### 初始化项目
 
-```
 npm install
-```
 
-运行测试
+### git 上传文件
 
-```
-npm test
-```
+1. 添加文件
+   git add \*
 
-添加文件
+2. 提交文件
+   git commit -m '提交信息'
 
-```
-git add *
-```
-
-提交文件
-
-```
-git commit -m '提交信息'
-```
-
-上传文件
-
-```
-git push -u origin master
-```
+3. 上传文件
+   git push
 
 ### pre-commit
 
@@ -38,7 +23,11 @@ git push -u origin master
 1. 单元测试正确性检查, 报错时不能 push
 2. 单元测试覆盖率检查
 
-参考文章
+### 根据提示提交文件
+
+npm run commit
+
+### 参考文章
 
 用 husky 和 lint-staged 构建超溜的代码检查工作流
 https://segmentfault.com/a/1190000009546913
