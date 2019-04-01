@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "concurrently \"eslint src/*.js\" \"csslint src/*.css\""
+    "lint": "concurrently \"eslint src/*.js\" \"stylelint src/*.css\""
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,11 @@
   "homepage": "https://github.com/adntin/git-management#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "csslint": "^1.0.5",
     "eslint": "^5.16.0",
     "husky": "^1.3.1",
-    "jest": "^24.5.0"
+    "jest": "^24.5.0",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended": "^2.1.0"
   },
   "husky": {
     "hooks": {
