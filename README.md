@@ -30,7 +30,7 @@
 
 ### husky 之 pre-commit
 
-- pre-commit 是 git 提交前的钩子, 一般用于校验语法
+- pre-commit 是 git commit 前的钩子, 对改动的文件做语法校验
 - 用 eslint 对 js 进行检查, 报错时不能 commit
 - 用 stylelint 对 css 进行检查, 报错时不能 commit
 
@@ -41,7 +41,7 @@
 
 ### husky 之 pre-push
 
-- 上传 git push 前的钩子
+- pre-push 是 git push 前的钩子, 必须全跑, 担心改动会影响其它地方
 - 单元测试正确性检查, 报错时不能 push
 - 单元测试覆盖率检查
 
