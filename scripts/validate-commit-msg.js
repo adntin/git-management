@@ -9,14 +9,17 @@ const regCommit = /^(feat|fix|docs|style|refactor|test|chore|revert)\(FIJI-\d+\)
 // Merge branch 'feature/FIJI-3955' into 'develop'
 const regMerge = /^(Merge (.*?) into (.*?)|(Merge branch (.*?))(?:\r?\n)*$)/;
 
+// 注意: 确保所有git提交都来自于 JIRA Issue
 if (!regCommit.test(msg) && !regMerge.test(msg)) {
   const { bgRed, red, green, yellow } = chalk;
   const errors = [
-    `${bgRed.dim(" ERROR ")} ${red(`invalid git commit message.`)}`,
-    `${red(`You should commit the following format message:`)}`,
-    `${green(`feat(scope): [subject] body`)}`,
-    `${yellow('You can use "npm run commit" to commit message.')}`
+    `\n${bgRed.dim(" ERROR ")} ${red(`invalid git commit message.`)}`,
+    `${yellow("Make sure all commit message come from Jira issue.")}\n`,
+    `${red("Current commit message:")}`,
+    `${red(msg)}\n`,
+    `${green(`The correct commit message format:`)}`,
+    `${green(`feat(FIJI-XXXX): [SUMMARY] DESCRIPTION`)}\n`
   ];
-  console.error(errors.join("\n\n"));
+  console.error(errors.join("\n"));
   process.exit(1);
 }
