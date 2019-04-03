@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "concurrently \"eslint src/*.js\" \"stylelint src/*.css\"",
+    "lint:staged": "lint-staged",
     "commit": "git-cz"
   },
   "repository": {
@@ -23,18 +24,30 @@
     "chalk": "^2.4.2",
     "commitizen": "^3.0.7",
     "concurrently": "^4.1.0",
-    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.16.0",
     "husky": "^1.3.1",
     "jest": "^24.5.0",
+    "lint-staged": "^8.1.5",
     "stylelint": "^9.10.1",
     "stylelint-config-recommended": "^2.1.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
+      "pre-commit": "lint-staged",
       "commit-msg": "node scripts/validate-commit-msg.js",
       "pre-push": "npm test"
     }
+  },
+  "lint-staged": {
+    "concurrent": true,
+    "linters": {
+      "src/*.{js, jsx}": "eslint",
+      "src/*.css": "stylelint",
+      "*.scss": "stylelint --syntax=scss"
+    },
+    "ignore": [
+      "dist/*",
+      "node_modules/*"
+    ]
   }
 }

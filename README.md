@@ -1,56 +1,71 @@
 ### 初始化项目
 
-npm install
+- npm install
+
+### 采用自己编写的 cz-jira 库提交 git 日志
+
+- npm run commit
 
 ### git 上传文件
 
-1. 添加文件
-   git add \*
+- git add \*
+- git commit -m '提交信息'
+- git push
 
-2. 提交文件
-   git commit -m '提交信息'
+### git 创建并切出分支
 
-3. 上传文件
-   git push
+- git checkout -b feature/FIJI-2000
 
-### pre-commit
+### git 合并分支, 合并 feature/FIJI-2000 分支到 master 分支
 
-1. 用 eslint 对 js 进行检查, 报错时不能 commit
-2. 用 stylelint 对 css 进行检查, 报错时不能 commit
+- git checkout master
+- git merge feature/FIJI-2000
 
-### pre-push
+### commitizen + cz-jira
 
-1. 单元测试正确性检查, 报错时不能 push
-2. 单元测试覆盖率检查
+- commitizen 是生成 git 日志(文本)的工具
+- cz-jira 是 commitizen 的 git 日志(文本)适配器(change log)
+- 需要在本项目的根目录添加.czrc 文件
+- 需要在本项目的根目录添加.cz-jira.js 文件
 
-### 采用自己编写的 cz-jira 库, 提交文件
+### husky 之 pre-commit
 
-npm run commit
+- pre-commit 是 git 提交前的钩子, 一般用于校验语法
+- 用 eslint 对 js 进行检查, 报错时不能 commit
+- 用 stylelint 对 css 进行检查, 报错时不能 commit
 
-### git 提交信息格式
+### husky 之 commit-msg
 
-feat(FIJI-1000): [SUMMARY] DESCRIPTION
+- 使用自己编写的 validate-commit-msg.js 校验 commitizen 生成的 git 日志(文本)
+- feat(FIJI-1000): [SUMMARY] DESCRIPTION
+
+### husky 之 pre-push
+
+- 上传 git push 前的钩子
+- 单元测试正确性检查, 报错时不能 push
+- 单元测试覆盖率检查
+
+### lint-staged 说明
+
+- 只做 git staged 中的文件做校验
+- lint-staged 是一个可执行脚本, 可以用 npx lint-staged 或者 npm run lint:staged 查看结果
 
 ### 注意
 
-需要添加.eslintrc.json 才能启用 eslint
-需要添加.stylelint.json 才能启用 stylelint
-需要添加.czrc 文件 才能启用 commitizen
-需要添加.cz-jira.js 文件 才能启用 cz-jira
-
-### 创建分支
-
-git checkout -b feature/FIJI-2000
-
-### 合并分支, 合并 feature/FIJI-2000 分支到 master 分支
-
-git checkout master
-git merge feature/FIJI-2000
+- 需要添加.eslintrc.json 才能启用 eslint
+- 需要添加.stylelint.json 才能启用 stylelint
+- 需要添加.czrc 文件 才能启用 commitizen
+- 需要添加.cz-jira.js 文件 才能启用 cz-jira
 
 ### 参考文章
 
-用 husky 和 lint-staged 构建超溜的代码检查工作流
-https://segmentfault.com/a/1190000009546913
+[commitizen/cz-cli](https://github.com/commitizen/cz-cli)
+[adntin/cz-jira](https://github.com/adntin/cz-jira)
 
-GitHub 官方出品的 Lint 工具列表
-https://github.com/collections/clean-code-linters
+[typicode/husky](https://github.com/typicode/husky)
+[okonet/lint-staged](https://github.com/okonet/lint-staged)
+
+[GitHub 官方出品的 Lint 工具列表](https://github.com/collections/clean-code-linters)
+
+[用 husky 和 lint-staged 构建超溜的代码检查工作流](https://segmentfault.com/a/1190000009546913)
+[lint-staged 和 husky 在 pre-commit 阶段做代码检查](https://dsb123dsb.github.io/2018/05/26/lint-staged%E5%92%8Chusky%E5%9C%A8pre-commit%E9%98%B6%E6%AE%B5%E5%81%9A%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5/)
