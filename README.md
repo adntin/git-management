@@ -38,6 +38,10 @@ feat(FIJI-1000): [SUMMARY] DESCRIPTION
 需要添加.czrc 文件 才能启用 commitizen
 需要添加.cz-jira.js 文件 才能启用 cz-jira
 
+### 创建分支
+
+git checkout -b feature/FIJI-2000
+
 ### 参考文章
 
 用 husky 和 lint-staged 构建超溜的代码检查工作流
