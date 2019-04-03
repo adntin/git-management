@@ -42,6 +42,11 @@ feat(FIJI-1000): [SUMMARY] DESCRIPTION
 
 git checkout -b feature/FIJI-2000
 
+### 合并分支, 合并 feature/FIJI-2000 分支到 master 分支
+
+git checkout master
+git merge feature/FIJI-2000
+
 ### 参考文章
 
 用 husky 和 lint-staged 构建超溜的代码检查工作流
