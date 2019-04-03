@@ -23,7 +23,7 @@ npm install
 1. 单元测试正确性检查, 报错时不能 push
 2. 单元测试覆盖率检查
 
-### 根据提示提交文件
+### 采用自己编写的 cz-jira 库, 提交文件
 
 npm run commit
 
