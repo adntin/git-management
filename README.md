@@ -5,6 +5,7 @@
 ### 采用自己编写的 cz-jira 库提交 git 日志
 
 - npm run commit
+- npm run commit -- --retry
 
 ### git 上传文件
 
