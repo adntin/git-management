@@ -27,6 +27,17 @@ npm install
 
 npm run commit
 
+### git 提交信息格式
+
+feat(FIJI-1000): [SUMMARY] DESCRIPTION
+
+### 注意
+
+需要添加.eslintrc.json 才能启用 eslint
+需要添加.stylelint.json 才能启用 stylelint
+需要添加.czrc 文件 才能启用 commitizen
+需要添加.cz-jira.js 文件 才能启用 cz-jira
+
 ### 参考文章
 
 用 husky 和 lint-staged 构建超溜的代码检查工作流
