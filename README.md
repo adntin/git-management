@@ -7,6 +7,10 @@
 - npm run commit
 - npm run commit -- --retry
 
+### 升级 npm 具体包
+
+- npm update cz-jira
+
 ### git 上传文件
 
 - git add \*
