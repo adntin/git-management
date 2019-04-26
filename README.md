@@ -26,8 +26,8 @@
 
 - commitizen 是生成 git 日志(文本)的工具
 - cz-jira 是 commitizen 的 git 日志(文本)适配器(change log)
-- 需要在本项目的根目录添加.czrc 文件
-- 需要在本项目的根目录添加.cz-jira.js 文件
+- commitizen 库需要在本项目的根目录添加.czrc 文件
+- cz-jira 库需要在本项目的根目录添加.cz-jira.js 文件
 
 ### husky 之 pre-commit
 
@@ -39,6 +39,7 @@
 
 - 使用自己编写的 validate-commit-msg.js 校验 commitizen 生成的 git 日志(文本)
 - feat(FIJI-1000): [SUMMARY] DESCRIPTION
+- 主要是防止直接用 git 命令提交, 比如: git commit -m 'feat(SOFT-123): [git 和 jira 集成] 修改 issue 的前缀'
 
 ### husky 之 pre-push
 
@@ -51,12 +52,16 @@
 - 只做 git staged 中的文件做校验
 - lint-staged 是一个可执行脚本, 可以用 npx lint-staged 或者 npm run lint:staged 查看结果
 
-### 注意
+### 配置文件说明
 
-- 需要添加.eslintrc.json 才能启用 eslint
-- 需要添加.stylelint.json 才能启用 stylelint
-- 需要添加.czrc 文件 才能启用 commitizen
-- 需要添加.cz-jira.js 文件 才能启用 cz-jira
+- .cz-jira.js 是 commitizen change log 自定义库 cz-jira 的配置文件
+- .czrc 是 commitizen 库的配置文件
+- .editorconfig 是为了保证所有 IDE 具有相同的编码风格, 需要 IDE 安装各自的插件, 比如 vscode 需要安装 EditorConfig for VS Code
+- .eslintrc.json 是为了启用 eslint 代码检查
+- .gitignore 是忽略 git 的跟踪
+- .prettierrc 是 prettier 的配置文件, 帮我们格式化真实代码风格
+- .stylelintrc 是为了启用 stylelint 代码检查
+- jira.config.json 是 jira 帐号配置
 
 ### 参考文章
 
@@ -70,5 +75,3 @@
 
 [用 husky 和 lint-staged 构建超溜的代码检查工作流](https://segmentfault.com/a/1190000009546913)
 [lint-staged 和 husky 在 pre-commit 阶段做代码检查](https://dsb123dsb.github.io/2018/05/26/lint-staged%E5%92%8Chusky%E5%9C%A8pre-commit%E9%98%B6%E6%AE%B5%E5%81%9A%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5/)
-
-测试
