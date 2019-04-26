@@ -1,11 +1,20 @@
-const chalk = require("chalk");
-const fs = require("fs");
+/*
+ * @Author: linbin@leedarson.com
+ * @Date: 2019-04-26 09:05:33
+ * Copyright © Leedarson. All rights reserved.
+ */
 
-const husky_git_params = process.env.HUSKY_GIT_PARAMS; // '.git/COMMIT_EDITMSG'
+const chalk = require('chalk');
+const fs = require('fs');
+const jiraConfig = require('../.cz-jira.js');
 
-const msg = fs.readFileSync(husky_git_params, "utf-8").trim(); // read the git commit message
+const { prefix, types } = jiraConfig;
+const huskyGitParams = process.env.HUSKY_GIT_PARAMS; // '.git/COMMIT_EDITMSG'
+
+const msg = fs.readFileSync(huskyGitParams, 'utf-8').trim(); // read the git commit message
 // feat(FIJI-1000): [commit-msg] 添加validate-commit-msg.js文件
-const regCommit = /^(feat|fix|docs|style|refactor|test|chore|revert)\(FIJI-\d+\):\s\[.+\]\s.+/;
+const t = types.map(type => type.value).join('|'); // feat|fix|docs|style|refactor|test|chore|revert
+const regCommit = new RegExp(`^(${t})\\(${prefix}-\\d+\\):\\s\\[.+\\]\\s.+`); // feat(FIJI-XXXX): [SUMMARY] DESCRIPTION
 // Merge branch 'feature/FIJI-3955' into 'develop'
 const regMerge = /^(Merge (.*?) into (.*?)|(Merge branch (.*?))(?:\r?\n)*$)/;
 
@@ -13,13 +22,13 @@ const regMerge = /^(Merge (.*?) into (.*?)|(Merge branch (.*?))(?:\r?\n)*$)/;
 if (!regCommit.test(msg) && !regMerge.test(msg)) {
   const { bgRed, red, green, yellow } = chalk;
   const errors = [
-    `\n${bgRed.dim(" ERROR ")} ${red(`invalid git commit message.`)}`,
-    `${yellow("Make sure all commit message come from Jira issue.")}\n`,
-    `${red("Current commit message:")}`,
+    `\n${bgRed.dim(' commit msg error ')}`,
+    `${yellow('Make sure all commit message come from Jira issue.')}\n`,
+    `${red('Current commit message:')}`,
     `${red(msg)}\n`,
-    `${green(`The correct commit message format:`)}`,
-    `${green(`feat(FIJI-XXXX): [SUMMARY] DESCRIPTION`)}\n`
+    `${green('The correct commit message format:')}`,
+    `${green(`feat(${prefix}-XXXX): [SUMMARY] DESCRIPTION`)}\n`,
   ];
-  console.error(errors.join("\n"));
+  console.error(errors.join('\n'));
   process.exit(1);
 }
