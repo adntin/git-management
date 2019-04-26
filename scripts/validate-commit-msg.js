@@ -12,11 +12,9 @@ const { prefix, types } = jiraConfig;
 const huskyGitParams = process.env.HUSKY_GIT_PARAMS; // '.git/COMMIT_EDITMSG'
 
 const msg = fs.readFileSync(huskyGitParams, 'utf-8').trim(); // read the git commit message
-// feat(FIJI-1000): [commit-msg] 添加validate-commit-msg.js文件
 const t = types.map(type => type.value).join('|'); // feat|fix|docs|style|refactor|test|chore|revert
 const regCommit = new RegExp(`^(${t})\\(${prefix}-\\d+\\):\\s\\[.+\\]\\s.+`); // feat(FIJI-XXXX): [SUMMARY] DESCRIPTION
-// Merge branch 'feature/FIJI-3955' into 'develop'
-const regMerge = /^(Merge (.*?) into (.*?)|(Merge branch (.*?))(?:\r?\n)*$)/;
+const regMerge = /^(Merge (.*?) into (.*?)|(Merge branch (.*?))(?:\r?\n)*$)/; // Merge branch 'feature/FIJI-3955' into 'develop'
 
 // 注意: 确保所有git提交都来自于 JIRA Issue
 if (!regCommit.test(msg) && !regMerge.test(msg)) {
