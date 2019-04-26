@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  prefix: 'IPC',
+  prefix: 'SOFT',
   protocol: 'http',
   host: '192.168.6.107',
   port: 8080,
