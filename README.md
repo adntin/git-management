@@ -11,21 +11,6 @@
 
 - npm update cz-jira
 
-### git 上传文件
-
-- git add \*
-- git commit -m '提交信息'
-- git push
-
-### git 创建并切出分支
-
-- git checkout -b feature/FIJI-2000
-
-### git 合并分支, 合并 feature/FIJI-2000 分支到 master 分支
-
-- git checkout master
-- git merge feature/FIJI-2000
-
 ### commitizen + cz-jira
 
 - commitizen 是生成 git 日志(文本)的工具
@@ -79,51 +64,3 @@
 
 [用 husky 和 lint-staged 构建超溜的代码检查工作流](https://segmentfault.com/a/1190000009546913)
 [lint-staged 和 husky 在 pre-commit 阶段做代码检查](https://dsb123dsb.github.io/2018/05/26/lint-staged%E5%92%8Chusky%E5%9C%A8pre-commit%E9%98%B6%E6%AE%B5%E5%81%9A%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5/)
-
-### git 开发流程
-
-##### 新功能开发
-
-1. 创建本地分支, 并切换成当前分支
-
-- git checkout -b feature/SOFT-2244
-
-2. 添加代码
-
-- git add .
-
-3. 提交代码
-
-- npm run commit 或者 git commit -m feat(SOFT-2244): [SUMMARY] DESCRIPTION
-
-4. 推送代码
-
-- git push
-
-##### 开发完成后, 必须拉取 master 分支, 确保当前分支没有冲突, 并且是最新代码
-
-1. 切换分支
-
-- git checkout feature/SOFT-2244
-
-2. 把 master 分支合并到 feature/SOFT-2244 分支 (解决冲突)
-
-- git merge master
-
-6. 推送代码
-
-- git push
-
-##### 把功能分支合并到 master 分支, 注意: 不允许在 master 分支提交(commit)代码
-
-1. 切换分支
-
-- git checkout master
-
-2. 把 feature/SOFT-2244 分支合并到 master 分支
-
-- git merge feature/SOFT-2244
-
-3. 推送代码
-
-- git push
