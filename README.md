@@ -80,4 +80,44 @@
 [用 husky 和 lint-staged 构建超溜的代码检查工作流](https://segmentfault.com/a/1190000009546913)
 [lint-staged 和 husky 在 pre-commit 阶段做代码检查](https://dsb123dsb.github.io/2018/05/26/lint-staged%E5%92%8Chusky%E5%9C%A8pre-commit%E9%98%B6%E6%AE%B5%E5%81%9A%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5/)
 
-test
+### git 开发流程
+
+##### 业务功能开发
+
+1. 本地创建分支
+
+- git checkout -b feature/SOFT-2244
+
+2. 添加代码
+
+- git add .
+
+3. 提交代码
+
+- npm run commit 或者 git commit -m feat(SOFT-2244): [SUMMARY] DESCRIPTION
+
+4. 推送代码(日常提交)
+
+- git push
+
+5. 开发完成后, 把 master 分支合并到当前分支(feature/SOFT-2244), 解决冲突, 确保当前分支是最新的代码
+
+- git merge master
+
+6. 推送合并后的代码
+
+- git push
+
+##### 把功能分支合并到 master 分支, 不允许在 master 分支提交(commit)代码
+
+1. 切换分支
+
+- git checkout master
+
+2. 把 feature/SOFT-2244 分支合并到 master 分支
+
+- git merge feature/SOFT-2244
+
+3. 推送代码
+
+- git push
