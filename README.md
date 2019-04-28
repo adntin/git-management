@@ -82,9 +82,9 @@
 
 ### git 开发流程
 
-##### 业务功能开发
+##### 新功能开发
 
-1. 本地创建分支
+1. 创建本地分支, 并切换成当前分支
 
 - git checkout -b feature/SOFT-2244
 
@@ -96,19 +96,25 @@
 
 - npm run commit 或者 git commit -m feat(SOFT-2244): [SUMMARY] DESCRIPTION
 
-4. 推送代码(日常提交)
+4. 推送代码
 
 - git push
 
-5. 开发完成后, 把 master 分支合并到当前分支(feature/SOFT-2244), 解决冲突, 确保当前分支是最新的代码
+##### 开发完成后, 必须拉取 master 分支, 确保当前分支没有冲突, 并且是最新代码
+
+1. 切换分支
+
+- git checkout feature/SOFT-2244
+
+2. 把 master 分支合并到 feature/SOFT-2244 分支 (解决冲突)
 
 - git merge master
 
-6. 推送合并后的代码
+6. 推送代码
 
 - git push
 
-##### 把功能分支合并到 master 分支, 不允许在 master 分支提交(commit)代码
+##### 把功能分支合并到 master 分支, 注意: 不允许在 master 分支提交(commit)代码
 
 1. 切换分支
 
