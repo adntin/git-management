@@ -3,6 +3,7 @@
 - git add .
 - git commit -m 'MESSAGE'
 - git push
+- git push --set-upstream origin feature/SOFT-2244
 
 ### 创建并切出分支
 
