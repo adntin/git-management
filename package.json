@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "node scripts/check-yarn.js",
     "test": "jest",
     "lint": "concurrently \"eslint src/*.js\" \"stylelint src/*.css\"",
     "lint:staged": "lint-staged",
